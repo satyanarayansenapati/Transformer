@@ -8,7 +8,7 @@ class EncoderLayer(nn.Module):
     def __init__(self,d_model,hidden_dim,dropout, num_head, annot, mask):
         super(EncoderLayer,self). __init__()
         self.annot = annot
-        self.attention = MultiheadAtt(model_dim=d_model,num_head=8,annot=self.annot)
+        self.attention = MultiheadAtt(model_dim=d_model,num_head=num_head,annot=self.annot)
         self.norm1 = LayerNorm(model_dim=d_model,annot= self.annot)
         self.dropout1 = nn.Dropout(p = dropout)
         self.ff = FeedForward(hidden_dim=hidden_dim,model_dim=d_model,dropout=0.15,annot=self.annot)

@@ -79,7 +79,7 @@ class CrossAtten(nn.Module):
     if self.annot : print(f'Cross attention calculated. Shape of V matrix : {v.shape}')
 
     # concate the result from each head
-    v = v.reshape(batch, seq_len,-1)
+    v = v.permute(0,2,1,3).reshape(batch, seq_len,-1)
     if self.annot : print(f'Combining the results from each head, the final shape of V matrix : {v.shape}')
 
     # passing it through linear layer
